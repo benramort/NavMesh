@@ -29,10 +29,16 @@ public class PlayerNavigate : MonoBehaviour
                 Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.name == nombreSuelo || hit.collider.gameObject.name == "Platform" || hit.collider.gameObject.name == "Ring")
                 {
-                    Debug.Log("Hola");
+                    //Debug.Log("Hola");
                     agent.SetDestination(hit.point);
                 }
             }
         }
+    }
+
+    public void Respawn(Vector3 position)
+    {
+        agent.SetDestination(position);
+        transform.position = position;
     }
 }

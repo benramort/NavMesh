@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Die : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Transform respawnPoint;
+    [SerializeField] private string enemyTag;
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        Debug.Log("Colisión");
+        if (collision.collider.gameObject.tag == enemyTag)
+        {
+            Debug.Log("A respawnear");
+            this.GetComponent<PlayerNavigate>().Respawn(respawnPoint.position);
+        }   
     }
 }
